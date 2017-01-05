@@ -17,9 +17,6 @@ var jwt = require('jwt-simple');
 var moment = require('moment');
 var mongoose = require('mongoose');
 var request = require('request');
-var google = require('googleapis');
-var OAuth2 = google.auth.OAuth2;
-var urlshortener = google.urlshortener('v1');
 
 var config = require('./config');
 
@@ -206,7 +203,7 @@ app.post('/auth/signup', function(req, res) {
  */
 app.post('/auth/google', function(req, res) {
   var accessTokenUrl = 'https://www.googleapis.com/oauth2/v4/token';
-  var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
+  var peopleApiUrl = 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json';
   var params = {
     code: req.body.code,
     client_id: req.body.clientId,
@@ -214,24 +211,15 @@ app.post('/auth/google', function(req, res) {
     redirect_uri: req.body.redirectUri,
     grant_type: 'authorization_code'
   };
-
-
-var oauth2Client = new OAuth2(
-  req.body.clientId,
-  config.GOOGLE_SECRET,
-  req.body.redirectUri
-);
-oauth2Client.getToken(req.body.code, function (err, tokens) {
-  console.log(tokens);
-  // Now tokens contains an access_token and an optional refresh_token. Save them.
-  if (!err) {
-    oauth2Client.setCredentials(tokens);
-  }
-});
-
+   var token_request='code='+req.body.code+
+        '&client_id='+req.body.clientId+
+        '&client_secret='+config.GOOGLE_SECRET+
+        '&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fadmin'+
+        '&grant_type=authorization_code';
+    var request_length = token_request.length;
   // Step 1. Exchange authorization code for access token.
-/*  request.post(accessTokenUrl, { json: true, form: params,headers: {'Content-Type': 'application/x-www-form-urlencoded'} }, function(err, response, token) {
-    var accessToken = token.access_token;
+  request.post(accessTokenUrl, { body: token_request, headers: {'Content-type':'application/x-www-form-urlencoded'} }, function(err, response, token) {
+    var accessToken = JSON.parse(token).access_token;
     var headers = { Authorization: 'Bearer ' + accessToken };
 
     // Step 2. Retrieve profile information about the current user.
@@ -277,7 +265,7 @@ oauth2Client.getToken(req.body.code, function (err, tokens) {
         });
       }
     });
-  }); */
+  });
 });
 
 /*

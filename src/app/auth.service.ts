@@ -128,7 +128,7 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
   }
    if(provider == "google" && !this.isLoggedIn()){ 
       localStorage.setItem("authConfig",JSON.stringify(this.authConfig.google));
-       window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id='+this.authConfig.google.clientId+'&redirect_uri='+this.authConfig.google.redirectURI+'&scope=https://www.googleapis.com/auth/userinfo.profile'+'&access_type=offline';
+       window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id='+this.authConfig.google.clientId+'&redirect_uri='+this.authConfig.google.redirectURI+'&scope=email%20profile'+'&access_type=offline';
   }
     else{
         this.router.navigate(['/admin']);

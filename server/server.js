@@ -25,18 +25,8 @@ var userSchema = new mongoose.Schema({
   password: { type: String, select: false },
   displayName: String,
   picture: String,
-  bitbucket: String,
-  facebook: String,
-  foursquare: String,
-  google: String,
-  github: String,
-  instagram: String,
-  linkedin: String,
-  live: String,
-  yahoo: String,
-  twitter: String,
-  twitch: String,
-  spotify: String
+  provider: String,
+  provider_id: String
 });
 
 userSchema.pre('save', function(next) {
@@ -203,7 +193,7 @@ app.post('/auth/signup', function(req, res) {
  */
 app.post('/auth/google', function(req, res) {
   var accessTokenUrl = 'https://www.googleapis.com/oauth2/v4/token';
-  var peopleApiUrl = 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json';
+  var peopleApiUrl = 'https://www.googleapis.com/oauth2/v1/userinfo?fields=email%2Cfamily_name%2Cgender%2Cgiven_name%2Chd%2Cid%2Clink%2Clocale%2Cname%2Cpicture%2Cverified_email';
   var params = {
     code: req.body.code,
     client_id: req.body.clientId,
@@ -227,43 +217,27 @@ app.post('/auth/google', function(req, res) {
       if (profile.error) {
         return res.status(500).send({message: profile.error.message});
       }
-      // Step 3a. Link user accounts.
-      if (req.header('Authorization')) {
-        User.findOne({ google: profile.sub }, function(err, existingUser) {
-          if (existingUser) {
-            return res.status(409).send({ message: 'There is already a Google account that belongs to you' });
+
+      User.findOne({ email: profile.email }, function(err, existingUser) {
+          if (existingUser && existingUser.provider == "google") {
+            var token = createJWT(existingUser);
+            res.send({ token: token }); 
           }
-          var token = req.header('Authorization').split(' ')[1];
-          var payload = jwt.decode(token, config.TOKEN_SECRET);
-          User.findById(payload.sub, function(err, user) {
-            if (!user) {
-              return res.status(400).send({ message: 'User not found' });
-            }
-            user.google = profile.sub;
-            user.picture = user.picture || profile.picture.replace('sz=50', 'sz=200');
-            user.displayName = user.displayName || profile.name;
-            user.save(function() {
-              var token = createJWT(user);
-              res.send({ token: token });
-            });
-          });
-        });
-      } else {
-        // Step 3b. Create a new user account or return an existing one.
-        User.findOne({ google: profile.sub }, function(err, existingUser) {
-          if (existingUser) {
-            return res.send({ token: createJWT(existingUser) });
+          else{
+              var user = new User();
+              user.provider_id = profile.id;
+              user.provider = "google";
+              user.email = profile.email;
+              user.picture = profile.picture.replace('sz=50', 'sz=200');
+              user.displayName = profile.name;
+              user.save(function(err) {
+                var token = createJWT(user);
+                res.send({ token: token });
+              });
           }
-          var user = new User();
-          user.google = profile.sub;
-          user.picture = profile.picture.replace('sz=50', 'sz=200');
-          user.displayName = profile.name;
-          user.save(function(err) {
-            var token = createJWT(user);
-            res.send({ token: token });
-          });
+         // var token = req.header('Authorization').split(' ')[1];
+         // var payload = jwt.decode(token, config.TOKEN_SECRET);
         });
-      }
     });
   });
 });
@@ -417,7 +391,7 @@ app.post('/auth/linkedin', function(req, res) {
  |--------------------------------------------------------------------------
  */
 app.post('/auth/facebook', function(req, res) {
-  var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name'];
+  var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name','picture'];
   var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
   var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + fields.join(',');
   var params = {
@@ -438,45 +412,26 @@ app.post('/auth/facebook', function(req, res) {
       if (response.statusCode !== 200) {
         return res.status(500).send({ message: profile.error.message });
       }
-      if (req.header('Authorization')) {
-        User.findOne({ facebook: profile.id }, function(err, existingUser) {
-          if (existingUser) {
-            return res.status(409).send({ message: 'There is already a Facebook account that belongs to you' });
-          }
-          var token = req.header('Authorization').split(' ')[1];
-          var payload = jwt.decode(token, config.TOKEN_SECRET);
-          User.findById(payload.sub, function(err, user) {
-            if (!user) {
-              return res.status(400).send({ message: 'User not found' });
-            }
-            user.facebook = profile.id;
-            user.email = profile.email;
-            user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
-            user.displayName = user.displayName || profile.name;
-            user.save(function() {
-              var token = createJWT(user);
-              res.send({ token: token });
-            });
-          });
-        });
-      } else {
-        // Step 3. Create a new user account or return an existing one.
-        User.findOne({ facebook: profile.id }, function(err, existingUser) {
-          if (existingUser) {
+      User.findOne({ email: profile.email }, function(err, existingUser) {
+          if (existingUser && existingUser.provider == "facebook") {
             var token = createJWT(existingUser);
-            return res.send({ token: token });
+            res.send({ token: token }); 
           }
-          var user = new User();
-          user.facebook = profile.id;
-          user.email = profile.email;
-          user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
-          user.displayName = profile.name;
-          user.save(function(err,user) {
-            var token = createJWT(user);
-            res.send({ token: token });
-          });
+          else{
+              var user = new User();
+              user.provider_id = profile.id;
+              user.provider = "facebook";
+              user.email = profile.email;
+              user.picture = profile.picture.data.url.replace('sz=50', 'sz=200');
+              user.displayName = profile.name;
+              user.save(function(err) {
+                var token = createJWT(user);
+                res.send({ token: token });
+              });
+          }
+         // var token = req.header('Authorization').split(' ')[1];
+         // var payload = jwt.decode(token, config.TOKEN_SECRET);
         });
-      }
     });
   });
 });

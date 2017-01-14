@@ -58,7 +58,7 @@ mongoose.connection.on('error', function(err) {
 var app = express();
 
 app.set('port', process.env.PORT || 5000);
-app.set('host', process.env.NODE_IP || 'localhost');
+//app.set('host', process.env.NODE_IP || 'localhost');
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -944,9 +944,6 @@ app.get('*', (req, res) => {
  |--------------------------------------------------------------------------
  */
 
-app.get('/', function(request, response) {
-    var result = 'App is running'
-    response.send(result);
-}).listen(app.get('port'), app.get('host'), function() {
+app.listen(app.get('port'), app.get('host'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });

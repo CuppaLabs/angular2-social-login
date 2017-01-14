@@ -14,8 +14,7 @@ export class AdminService {
      constructor (private _http: InterceptorService) {
          
      }
-     // private instance variable to hold base url
-     private commentsUrl = 'http://localhost:5000/api/profile'; 
+     private commentsUrl = 'http://localhost:3000/api/profile'; 
      
 getProfile() : Observable<any> {
 

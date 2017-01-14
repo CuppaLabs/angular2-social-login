@@ -54,7 +54,7 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-path
        */
-      path: helpers.root('docs'),
+      path: helpers.root('dist/client'),
 
       /**
        * Specifies the name of each output file on disk.

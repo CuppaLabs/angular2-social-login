@@ -18,7 +18,7 @@ var moment = require('moment');
 var mongoose = require('mongoose');
 var request = require('request');
 
-var config = require('./config');
+var config = require('./auth-config');
 
 var userSchema = new mongoose.Schema({
   email: { type: String, lowercase: true },
@@ -57,7 +57,7 @@ mongoose.connection.on('error', function(err) {
 
 var app = express();
 
-app.set('port', process.env.NODE_PORT || 5000);
+app.set('port', process.env.NODE_PORT || 3000);
 app.set('host', process.env.NODE_IP || 'localhost');
 app.use(cors());
 app.use(logger('dev'));
@@ -71,7 +71,7 @@ if (app.get('env') === 'production') {
     protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
   });
 }
-app.use(express.static(path.join(__dirname, '../client2')));
+app.use(express.static(path.join(__dirname, '/dist/client')));
 
 /*
  |--------------------------------------------------------------------------
@@ -935,7 +935,7 @@ app.post('/auth/unlink', ensureAuthenticated, function(req, res) {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client2/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/client/index.html'));
 });
 
 /*

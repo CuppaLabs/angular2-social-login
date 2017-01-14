@@ -1,6 +1,7 @@
 module.exports = {
   // App Settings
   MONGO_URI: process.env.MONGO_URI || 'mongodb://localhost/cuppaOAuth',
+  //MONGO_URI: process.env.MONGO_URI || 'mongodb://solomon301:pradeep@ds111489.mlab.com:11489/cuppaoauth',
   TOKEN_SECRET: process.env.TOKEN_SECRET || 'YOUR_UNIQUE_JWT_TOKEN_SECRET',
 
   // OAuth 2.0

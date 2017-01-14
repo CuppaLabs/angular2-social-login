@@ -204,7 +204,7 @@ app.post('/auth/google', function(req, res) {
    var token_request='code='+req.body.code+
         '&client_id='+req.body.clientId+
         '&client_secret='+config.GOOGLE_SECRET+
-        '&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fadmin'+
+        '&redirect_uri=https%3A%2F%2Fmurmuring-waters-53650.herokuapp.com%2Fadmin'+
         '&grant_type=authorization_code';
     var request_length = token_request.length;
   // Step 1. Exchange authorization code for access token.

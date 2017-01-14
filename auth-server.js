@@ -944,6 +944,9 @@ app.get('*', (req, res) => {
  |--------------------------------------------------------------------------
  */
 
-app.listen(app.get('port'), app.get('host'), function() {
+app.get('/', function(request, response) {
+    var result = 'App is running'
+    response.send(result);
+}).listen(app.get('port'), app.get('host'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });

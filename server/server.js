@@ -118,7 +118,7 @@ function createJWT(user) {
  | GET /api/me
  |--------------------------------------------------------------------------
  */
-app.get('/api/me', ensureAuthenticated, function(req, res) {
+app.get('/api/profile', ensureAuthenticated, function(req, res) {
   User.findById(req.user, function(err, user) {
     res.send(user);
   });
@@ -222,6 +222,18 @@ app.post('/auth/google', function(req, res) {
           if (existingUser && existingUser.provider == "google") {
             var token = createJWT(existingUser);
             res.send({ token: token }); 
+          }
+          else if (existingUser && existingUser.provider != "google") {
+            var user = {};
+              user.provider_id = profile.id;
+              user.provider = "google";
+              user.email = profile.email;
+              user.picture = profile.picture.replace('sz=50', 'sz=200');
+              user.displayName = profile.name;
+              User.findOneAndUpdate({email:existingUser.email},user, function(err) {
+                var token = createJWT(existingUser);
+                res.send({ token: token });
+              });
           }
           else{
               var user = new User();
@@ -344,43 +356,37 @@ app.post('/auth/linkedin', function(req, res) {
     // Step 2. Retrieve profile information about the current user.
     request.get({ url: peopleApiUrl, qs: params, json: true }, function(err, response, profile) {
 
-      // Step 3a. Link user accounts.
-      if (req.header('Authorization')) {
-        User.findOne({ linkedin: profile.id }, function(err, existingUser) {
-          if (existingUser) {
-            return res.status(409).send({ message: 'There is already a LinkedIn account that belongs to you' });
-          }
-          var token = req.header('Authorization').split(' ')[1];
-          var payload = jwt.decode(token, config.TOKEN_SECRET);
-          User.findById(payload.sub, function(err, user) {
-            if (!user) {
-              return res.status(400).send({ message: 'User not found' });
-            }
-            user.linkedin = profile.id;
-            user.picture = user.picture || profile.pictureUrl;
-            user.displayName = user.displayName || profile.firstName + ' ' + profile.lastName;
-            user.save(function() {
-              var token = createJWT(user);
-              res.send({ token: token });
-            });
-          });
-        });
-      } else {
         // Step 3b. Create a new user account or return an existing one.
-        User.findOne({ linkedin: profile.id }, function(err, existingUser) {
-          if (existingUser) {
-            return res.send({ token: createJWT(existingUser) });
+        User.findOne({ email: profile.emailAddress }, function(err, existingUser) {
+        if (existingUser && existingUser.provider == "linkedin") {
+            var token = createJWT(existingUser);
+            res.send({ token: token }); 
           }
-          var user = new User();
-          user.linkedin = profile.id;
-          user.picture = profile.pictureUrl;
-          user.displayName = profile.firstName + ' ' + profile.lastName;
-          user.save(function() {
-            var token = createJWT(user);
-            res.send({ token: token });
-          });
+          else if (existingUser && existingUser.provider != "linkedin") {
+            var user = {};
+              user.provider_id = profile.id;
+              user.provider = "linkedin";
+              user.email = profile.emailAddress;
+              user.picture = profile.pictureUrl;
+              user.displayName = profile.firstName+' '+profile.lastName;
+              User.findOneAndUpdate({email:existingUser.email},user, function(err) {
+                var token = createJWT(existingUser);
+                res.send({ token: token });
+              });
+          }
+          else{
+              var user = new User();
+              user.provider_id = profile.id;
+              user.provider = "linkedin";
+              user.email = profile.emailAddress;
+              user.picture = profile.pictureUrl;
+              user.displayName = profile.firstName+' '+profile.lastName;
+              user.save(function() {
+                var token = createJWT(user);
+                res.send({ token: token });
+              });
+        }
         });
-      }
     });
   });
 });
@@ -416,6 +422,18 @@ app.post('/auth/facebook', function(req, res) {
           if (existingUser && existingUser.provider == "facebook") {
             var token = createJWT(existingUser);
             res.send({ token: token }); 
+          }
+          else if (existingUser && existingUser.provider != "facebook") {
+            var user = {};
+              user.provider_id = profile.id;
+              user.provider = "facebook";
+              user.email = profile.email;
+              user.picture = profile.picture.data.url.replace('sz=50', 'sz=200');
+              user.displayName = profile.name;
+              User.findOneAndUpdate({email:existingUser.email},user, function(err) {
+                var token = createJWT(existingUser);
+                res.send({ token: token });
+              });
           }
           else{
               var user = new User();

@@ -9,7 +9,7 @@ import { ActivatedRoute }       from '@angular/router';
   template: `
     <h2>LOGIN</h2>
     <p>
-      <button (click)="githubLogin()">Github</button>
+      <button (click)="linkedinLogin()">LinkedIn</button>
       <button (click)="facebookLogin()">Facebook</button>
       <button (click)="googleLogin()">Google</button>
     </p>`
@@ -22,8 +22,8 @@ export class LoginComponent {
   mywindow: Window;
   constructor(private route: ActivatedRoute, public authService: AuthService, public router: Router) {
   }
-  githubLogin() {
-    this.authService.auth('github');
+  linkedinLogin() {
+    this.authService.auth('linkedin');
   }
   facebookLogin(){
     this.authService.auth('facebook');

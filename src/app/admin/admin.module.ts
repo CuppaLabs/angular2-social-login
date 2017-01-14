@@ -7,6 +7,7 @@ import { ManageCrisesComponent }    from './manage-crises.component';
 import { ManageHeroesComponent }    from './manage-heroes.component';
 
 import { AdminRoutingModule }       from './admin-routing.module';
+import {AdminService} from './admin.services'
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { AdminRoutingModule }       from './admin-routing.module';
     AdminDashboardComponent,
     ManageCrisesComponent,
     ManageHeroesComponent
+  ],
+  providers: [
+    AdminService
   ]
 })
 export class AdminModule {}

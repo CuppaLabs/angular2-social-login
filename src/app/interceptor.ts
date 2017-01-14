@@ -4,6 +4,7 @@ export class ServerURLInterceptor implements Interceptor {
     public interceptBefore(request: InterceptedRequest): InterceptedRequest {
         if(localStorage.getItem('isLoggedIn') == "true"){
             console.log(request);
+            request.options.headers.append("Authorization","Bearer "+localStorage.getItem('token'));
         }
               
         return request;

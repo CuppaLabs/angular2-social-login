@@ -2,46 +2,44 @@ import { Component, OnInit }    from '@angular/core';
 import { ActivatedRoute }       from '@angular/router';
 import { Observable }           from 'rxjs/Observable';
 import { PreloadSelectedModules } from '../selective-preload-strategy';
+import {AdminService} from './admin.services'
+import { User } from './profile.interface';
 
 import 'rxjs/add/operator/map';
 
 @Component({
   template:  `
-    <p>Dashboard</p>
-
-    <p>Session ID: {{ sessionId | async }}</p>
-    <a id="anchor"></a>
-    <p>Token: {{ token | async }}</p>
-
-    Preloaded Modules
-    <ul>
-      <li *ngFor="let module of modules">{{ module }}</li>
-    </ul>
+    <p>User ID: {{ user._id}}</p>
+    <p>Name: {{ user.displayName}}</p>
+    <p>Email: {{ user.email}}</p>
+    <img src="{{ user.picture}}" />
+    <p>Provider: {{ user.provider}}</p>
+    <p>Provider ID: {{ user.provider_id}}</p>
+    
   `
 })
 export class AdminDashboardComponent implements OnInit {
-  sessionId: Observable<string>;
-  token: Observable<string>;
-  modules: string[];
-
-  constructor(
-    private route: ActivatedRoute,
-    private preloadStrategy: PreloadSelectedModules
-  ) {
-    this.modules = preloadStrategy.preloadedModules;
+  private user:User = new User();
+  constructor(private adminService: AdminService) {
+    
   }
 
   ngOnInit() {
-    // Capture the session ID if available
-    this.sessionId = this.route
-      .queryParams
-      .map(params => params['session_id'] || 'None');
-
-    // Capture the fragment if available
-    this.token = this.route
-      .fragment
-      .map(fragment => fragment || 'None');
+    this.getUserProfile();
   }
+  getUserProfile() {
+        
+        this.adminService.getProfile().subscribe(
+                                profile => {
+                                    console.log(profile);
+                                    console.log(this.user = new User(profile._id, profile.displayName, profile.email, profile.picture,profile.provider,profile.provider_id));
+                                    //this.
+
+                                }, 
+                                err => {
+                                    console.log(err);
+                                });
+    }
 }
 
 

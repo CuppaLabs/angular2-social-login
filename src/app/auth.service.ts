@@ -18,9 +18,9 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
 
  private authConfig = {
 
-   "github":{
-     "authEndpoint":"http://localhost:5000/auth/github",
-     "clientId":"8866df478d05617ba354",
+   "linkedin":{
+     "authEndpoint":"http://localhost:5000/auth/linkedin",
+     "clientId":"8176r44lz2ewos",
      "redirectURI" : "http://localhost:3000/admin"
    },
    "facebook":{
@@ -37,6 +37,7 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
  };
   private configObj = {"authEndpoint":"","clientId":"","redirectURI":""};
   private code:string;
+  private cachedURL:string;
   
   private loading: boolean;
   constructor(private _http: InterceptorService,private router:Router) {
@@ -47,13 +48,15 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
        router.events.forEach((event: NavigationEvent) => {
     if(event instanceof RoutesRecognized) {
         let params = new URLSearchParams(event.url.split('?')[1]);
-        this.code = params.get('code');    
+        this.code = params.get('code');  
+        if(event.url.split('?')[0] == "/login" && this.isLoggedIn()){
+            this.router.navigate([localStorage.getItem('cachedurl')]);
+        }
     }
   });
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let url: string = state.url;
-
     return this.verifyLogin(url);
   }
 
@@ -90,6 +93,8 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
      this.router.navigate(['/login']);
   }
   verifyLogin(url):boolean{
+     localStorage.setItem('cachedurl',url.split('?')[0]);
+     this.cachedURL = localStorage.getItem('cachedurl');
     if(!this.isLoggedIn() && this.code == null){
       this.router.navigate(['/login']);
       return false;
@@ -102,7 +107,7 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
       this.login(this.code,this.configObj.clientId,this.configObj.redirectURI,this.configObj.authEndpoint)
       .then((data:any) => {
           this.loading = false;
-          this.router.navigate(['/admin']);
+          this.router.navigate([this.cachedURL]);
               return true;
           });
     }
@@ -118,9 +123,9 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
     return status;
   }
   public auth(provider:string):void{
-    if(provider == "github" && !this.isLoggedIn()){
-      localStorage.setItem("authConfig",JSON.stringify(this.authConfig.github));
-      window.location.href = 'https://github.com/login/oauth/authorize?client_id='+this.authConfig.github.clientId+'&redirect_uri='+this.authConfig.github.redirectURI;
+    if(provider == "linkedin" && !this.isLoggedIn()){
+      localStorage.setItem("authConfig",JSON.stringify(this.authConfig.linkedin));
+      window.location.href = 'https://www.linkedin.com/oauth/v2/authorization?client_id='+this.authConfig.linkedin.clientId+'&redirect_uri='+this.authConfig.linkedin.redirectURI+'&response_type=code';
   }
    if(provider == "facebook" && !this.isLoggedIn()){ 
       localStorage.setItem("authConfig",JSON.stringify(this.authConfig.facebook));
@@ -128,10 +133,10 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
   }
    if(provider == "google" && !this.isLoggedIn()){ 
       localStorage.setItem("authConfig",JSON.stringify(this.authConfig.google));
-       window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id='+this.authConfig.google.clientId+'&redirect_uri='+this.authConfig.google.redirectURI+'&scope=email%20profile'+'&access_type=offline';
+       window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id='+this.authConfig.google.clientId+'&redirect_uri='+this.authConfig.google.redirectURI+'&scope=email%20profile';
   }
     else{
-        this.router.navigate(['/admin']);
+        this.router.navigate([this.cachedURL]);
     }
   }
 

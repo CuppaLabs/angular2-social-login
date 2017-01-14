@@ -44,7 +44,7 @@
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
     "start": "npm run auth-server",
-    "auth-server":"npm run build && node auth-server",
+    "auth-server":"node auth-server",
     "test": "karma start",
     "tslint": "tslint",
     "typedoc": "typedoc",

@@ -54,7 +54,7 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-path
        */
-      path: helpers.root('dist'),
+      path: helpers.root('docs'),
 
       /**
        * Specifies the name of each output file on disk.
@@ -186,7 +186,7 @@ module.exports = function (env) {
       ),
 
       new NormalModuleReplacementPlugin(
-        /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
+        /zone\.js(\\|\/)docs(\\|\/)long-stack-trace-zone/,
         helpers.root('config/empty.js')
       ),
 

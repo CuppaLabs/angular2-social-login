@@ -607,19 +607,19 @@ var AuthService = (function () {
         this.router = router;
         this.authConfig = {
             "linkedin": {
-                "authEndpoint": "http://localhost:3000/auth/linkedin",
+                "authEndpoint": "https://murmuring-waters-53650.herokuapp.com/auth/linkedin",
                 "clientId": "8176r44lz2ewos",
-                "redirectURI": "http://localhost:3000/admin"
+                "redirectURI": "https://murmuring-waters-53650.herokuapp.com/admin"
             },
             "facebook": {
-                "authEndpoint": "http://localhost:3000/auth/facebook",
+                "authEndpoint": "https://murmuring-waters-53650.herokuapp.com/auth/facebook",
                 "clientId": "929055083862567",
-                "redirectURI": "http://localhost:3000/admin"
+                "redirectURI": "https://murmuring-waters-53650.herokuapp.com/admin"
             },
             "google": {
-                "authEndpoint": "http://localhost:3000/auth/google",
+                "authEndpoint": "https://murmuring-waters-53650.herokuapp.com/auth/google",
                 "clientId": "77954512562-eftl8up04q1g3aha2mjg5h6bgel9svkk.apps.googleusercontent.com",
-                "redirectURI": "http://localhost:3000/admin"
+                "redirectURI": "https://murmuring-waters-53650.herokuapp.com/admin"
             }
         };
         this.configObj = { "authEndpoint": "", "clientId": "", "redirectURI": "" };

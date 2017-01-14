@@ -134,7 +134,7 @@ var AdminService = (function () {
     // Resolve HTTP using the constructor
     function AdminService(_http) {
         this._http = _http;
-        this.commentsUrl = 'http://localhost:3000/api/profile';
+        this.commentsUrl = 'https://murmuring-waters-53650.herokuapp.com/api/profile';
     }
     AdminService.prototype.getProfile = function () {
         // ...using get request

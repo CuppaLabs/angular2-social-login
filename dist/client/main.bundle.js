@@ -717,14 +717,14 @@ var AuthService = (function () {
             this.router.navigate([this.cachedURL]);
         }
     };
+    AuthService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof ng2_interceptors_1.InterceptorService !== 'undefined' && ng2_interceptors_1.InterceptorService) === 'function' && _a) || Object, (typeof (_b = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _b) || Object])
+    ], AuthService);
     return AuthService;
+    var _a, _b;
 }());
-AuthService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [typeof (_a = typeof ng2_interceptors_1.InterceptorService !== "undefined" && ng2_interceptors_1.InterceptorService) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
-], AuthService);
 exports.AuthService = AuthService;
-var _a, _b;
 
 
 /***/ },
@@ -1651,16 +1651,16 @@ var LoginComponent = (function () {
     LoginComponent.prototype.googleLogin = function () {
         this.authService.auth('google');
     };
+    LoginComponent = __decorate([
+        core_1.Component({
+            template: "\n    <h2>LOGIN</h2>\n    <p>\n      <button (click)=\"linkedinLogin()\">LinkedIn</button>\n      <button (click)=\"facebookLogin()\">Facebook</button>\n      <button (click)=\"googleLogin()\">Google</button>\n    </p>"
+        }), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof router_2.ActivatedRoute !== 'undefined' && router_2.ActivatedRoute) === 'function' && _a) || Object, (typeof (_b = typeof auth_service_1.AuthService !== 'undefined' && auth_service_1.AuthService) === 'function' && _b) || Object, (typeof (_c = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _c) || Object])
+    ], LoginComponent);
     return LoginComponent;
+    var _a, _b, _c;
 }());
-LoginComponent = __decorate([
-    core_1.Component({
-        template: "\n    <h2>LOGIN</h2>\n    <p>\n      <button (click)=\"linkedinLogin()\">LinkedIn</button>\n      <button (click)=\"facebookLogin()\">Facebook</button>\n      <button (click)=\"googleLogin()\">Google</button>\n    </p>"
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof router_2.ActivatedRoute !== "undefined" && router_2.ActivatedRoute) === "function" && _a || Object, typeof (_b = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
-], LoginComponent);
 exports.LoginComponent = LoginComponent;
-var _a, _b, _c;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
@@ -3945,23 +3945,23 @@ var appRoutes = [
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
+    AppRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                router_1.RouterModule.forRoot(appRoutes, { preloadingStrategy: selective_preload_strategy_1.PreloadSelectedModules })
+            ],
+            exports: [
+                router_1.RouterModule
+            ],
+            providers: [
+                can_deactivate_guard_service_1.CanDeactivateGuard,
+                selective_preload_strategy_1.PreloadSelectedModules
+            ]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppRoutingModule);
     return AppRoutingModule;
 }());
-AppRoutingModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            router_1.RouterModule.forRoot(appRoutes, { preloadingStrategy: selective_preload_strategy_1.PreloadSelectedModules })
-        ],
-        exports: [
-            router_1.RouterModule
-        ],
-        providers: [
-            can_deactivate_guard_service_1.CanDeactivateGuard,
-            selective_preload_strategy_1.PreloadSelectedModules
-        ]
-    }),
-    __metadata("design:paramtypes", [])
-], AppRoutingModule);
 exports.AppRoutingModule = AppRoutingModule;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
@@ -3985,17 +3985,17 @@ var AppComponent = (function () {
     AppComponent.prototype.logout = function () {
         this.authService.logout();
     };
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'my-app',
+            template: "\n    <h1 class=\"title\">Angular 2 OAuth Example</h1>\n    <button (click)=\"logout()\" *ngIf=\"authService.isLoggedIn()\">Logout</button>\n    <h1 *ngIf=\"authService.loading\">Logging in.. Please Wait...</h1>\n    <router-outlet></router-outlet>\n  "
+        }), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof auth_service_1.AuthService !== 'undefined' && auth_service_1.AuthService) === 'function' && _a) || Object])
+    ], AppComponent);
     return AppComponent;
+    var _a;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: "\n    <h1 class=\"title\">Angular 2 OAuth Example</h1>\n    <button (click)=\"logout()\" *ngIf=\"authService.isLoggedIn()\">Logout</button>\n    <h1 *ngIf=\"authService.loading\">Logging in.. Please Wait...</h1>\n    <router-outlet></router-outlet>\n  "
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" && _a || Object])
-], AppComponent);
 exports.AppComponent = AppComponent;
-var _a;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
@@ -4030,35 +4030,34 @@ exports.interceptorFactory = interceptorFactory;
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                login_routing_module_1.LoginRoutingModule,
+                app_routing_module_1.AppRoutingModule,
+                http_1.HttpModule
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+                login_component_1.LoginComponent
+            ],
+            providers: [
+                dialog_service_1.DialogService,
+                window_service_1.WindowService,
+                interceptor_1.ServerURLInterceptor,
+                {
+                    provide: ng2_interceptors_1.InterceptorService,
+                    useFactory: interceptorFactory,
+                    deps: [http_1.XHRBackend, http_1.RequestOptions, interceptor_1.ServerURLInterceptor] }
+            ],
+            bootstrap: [app_component_1.AppComponent]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
-            login_routing_module_1.LoginRoutingModule,
-            app_routing_module_1.AppRoutingModule,
-            http_1.HttpModule
-        ],
-        declarations: [
-            app_component_1.AppComponent,
-            login_component_1.LoginComponent
-        ],
-        providers: [
-            dialog_service_1.DialogService,
-            window_service_1.WindowService,
-            interceptor_1.ServerURLInterceptor,
-            {
-                provide: ng2_interceptors_1.InterceptorService,
-                useFactory: interceptorFactory,
-                deps: [http_1.XHRBackend, http_1.RequestOptions, interceptor_1.ServerURLInterceptor]
-            }
-        ],
-        bootstrap: [app_component_1.AppComponent]
-    }),
-    __metadata("design:paramtypes", [])
-], AppModule);
 exports.AppModule = AppModule;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
@@ -4080,12 +4079,12 @@ var CanDeactivateGuard = (function () {
     CanDeactivateGuard.prototype.canDeactivate = function (component) {
         return component.canDeactivate ? component.canDeactivate() : true;
     };
+    CanDeactivateGuard = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], CanDeactivateGuard);
     return CanDeactivateGuard;
 }());
-CanDeactivateGuard = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], CanDeactivateGuard);
 exports.CanDeactivateGuard = CanDeactivateGuard;
 
 
@@ -4114,12 +4113,12 @@ var DialogService = (function () {
         });
     };
     ;
+    DialogService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], DialogService);
     return DialogService;
 }());
-DialogService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], DialogService);
 exports.DialogService = DialogService;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
@@ -4169,22 +4168,22 @@ var loginRoutes = [
 var LoginRoutingModule = (function () {
     function LoginRoutingModule() {
     }
+    LoginRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                router_1.RouterModule.forChild(loginRoutes)
+            ],
+            exports: [
+                router_1.RouterModule
+            ],
+            providers: [
+                auth_service_1.AuthService
+            ]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], LoginRoutingModule);
     return LoginRoutingModule;
 }());
-LoginRoutingModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            router_1.RouterModule.forChild(loginRoutes)
-        ],
-        exports: [
-            router_1.RouterModule
-        ],
-        providers: [
-            auth_service_1.AuthService
-        ]
-    }),
-    __metadata("design:paramtypes", [])
-], LoginRoutingModule);
 exports.LoginRoutingModule = LoginRoutingModule;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
@@ -4218,12 +4217,12 @@ var PreloadSelectedModules = (function () {
             return Observable_1.Observable.of(null);
         }
     };
+    PreloadSelectedModules = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], PreloadSelectedModules);
     return PreloadSelectedModules;
 }());
-PreloadSelectedModules = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], PreloadSelectedModules);
 exports.PreloadSelectedModules = PreloadSelectedModules;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
@@ -4254,12 +4253,12 @@ var WindowService = (function () {
         var options = "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top;
         return window.open(url, name, options);
     };
+    WindowService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], WindowService);
     return WindowService;
 }());
-WindowService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], WindowService);
 exports.WindowService = WindowService;
 
 

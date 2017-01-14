@@ -16,26 +16,26 @@ var admin_services_1 = __webpack_require__(969);
 var AdminModule = (function () {
     function AdminModule() {
     }
+    AdminModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                common_1.CommonModule,
+                admin_routing_module_1.AdminRoutingModule
+            ],
+            declarations: [
+                admin_component_1.AdminComponent,
+                admin_dashboard_component_1.AdminDashboardComponent,
+                manage_crises_component_1.ManageCrisesComponent,
+                manage_heroes_component_1.ManageHeroesComponent
+            ],
+            providers: [
+                admin_services_1.AdminService
+            ]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AdminModule);
     return AdminModule;
 }());
-AdminModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            common_1.CommonModule,
-            admin_routing_module_1.AdminRoutingModule
-        ],
-        declarations: [
-            admin_component_1.AdminComponent,
-            admin_dashboard_component_1.AdminDashboardComponent,
-            manage_crises_component_1.ManageCrisesComponent,
-            manage_heroes_component_1.ManageHeroesComponent
-        ],
-        providers: [
-            admin_services_1.AdminService
-        ]
-    }),
-    __metadata("design:paramtypes", [])
-], AdminModule);
 exports.AdminModule = AdminModule;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
@@ -73,16 +73,16 @@ var AdminDashboardComponent = (function () {
             console.log(err);
         });
     };
+    AdminDashboardComponent = __decorate([
+        core_1.Component({
+            template: "\n    <p>User ID: {{ user._id}}</p>\n    <p>Name: {{ user.displayName}}</p>\n    <p>Email: {{ user.email}}</p>\n    <img src=\"{{ user.picture}}\" />\n    <p>Provider: {{ user.provider}}</p>\n    <p>Provider ID: {{ user.provider_id}}</p>\n    \n  "
+        }), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof admin_services_1.AdminService !== 'undefined' && admin_services_1.AdminService) === 'function' && _a) || Object])
+    ], AdminDashboardComponent);
     return AdminDashboardComponent;
+    var _a;
 }());
-AdminDashboardComponent = __decorate([
-    core_1.Component({
-        template: "\n    <p>User ID: {{ user._id}}</p>\n    <p>Name: {{ user.displayName}}</p>\n    <p>Email: {{ user.email}}</p>\n    <img src=\"{{ user.picture}}\" />\n    <p>Provider: {{ user.provider}}</p>\n    <p>Provider ID: {{ user.provider_id}}</p>\n    \n  "
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof admin_services_1.AdminService !== "undefined" && admin_services_1.AdminService) === "function" && _a || Object])
-], AdminDashboardComponent);
 exports.AdminDashboardComponent = AdminDashboardComponent;
-var _a;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
@@ -101,14 +101,14 @@ var core_1 = __webpack_require__(1);
 var AdminComponent = (function () {
     function AdminComponent() {
     }
+    AdminComponent = __decorate([
+        core_1.Component({
+            template: "\n    <h3>ADMIN</h3>\n    <nav>\n      <a routerLink=\"./\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"{ exact: true }\">Dashboard</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AdminComponent);
     return AdminComponent;
 }());
-AdminComponent = __decorate([
-    core_1.Component({
-        template: "\n    <h3>ADMIN</h3>\n    <nav>\n      <a routerLink=\"./\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"{ exact: true }\">Dashboard</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
-    }),
-    __metadata("design:paramtypes", [])
-], AdminComponent);
 exports.AdminComponent = AdminComponent;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
@@ -142,14 +142,14 @@ var AdminService = (function () {
             .map(function (res) { return res.json(); })
             .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); });
     };
+    AdminService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof ng2_interceptors_1.InterceptorService !== 'undefined' && ng2_interceptors_1.InterceptorService) === 'function' && _a) || Object])
+    ], AdminService);
     return AdminService;
+    var _a;
 }());
-AdminService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [typeof (_a = typeof ng2_interceptors_1.InterceptorService !== "undefined" && ng2_interceptors_1.InterceptorService) === "function" && _a || Object])
-], AdminService);
 exports.AdminService = AdminService;
-var _a;
 
 
 /***/ },
@@ -163,14 +163,14 @@ var core_1 = __webpack_require__(1);
 var ManageCrisesComponent = (function () {
     function ManageCrisesComponent() {
     }
+    ManageCrisesComponent = __decorate([
+        core_1.Component({
+            template: "\n    <p>Manage your crises here</p>\n  "
+        }), 
+        __metadata('design:paramtypes', [])
+    ], ManageCrisesComponent);
     return ManageCrisesComponent;
 }());
-ManageCrisesComponent = __decorate([
-    core_1.Component({
-        template: "\n    <p>Manage your crises here</p>\n  "
-    }),
-    __metadata("design:paramtypes", [])
-], ManageCrisesComponent);
 exports.ManageCrisesComponent = ManageCrisesComponent;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
@@ -190,14 +190,14 @@ var core_1 = __webpack_require__(1);
 var ManageHeroesComponent = (function () {
     function ManageHeroesComponent() {
     }
+    ManageHeroesComponent = __decorate([
+        core_1.Component({
+            template: "\n    <p>Manage your heroes here</p>\n  "
+        }), 
+        __metadata('design:paramtypes', [])
+    ], ManageHeroesComponent);
     return ManageHeroesComponent;
 }());
-ManageHeroesComponent = __decorate([
-    core_1.Component({
-        template: "\n    <p>Manage your heroes here</p>\n  "
-    }),
-    __metadata("design:paramtypes", [])
-], ManageHeroesComponent);
 exports.ManageHeroesComponent = ManageHeroesComponent;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
@@ -241,19 +241,19 @@ var adminRoutes = [
 var AdminRoutingModule = (function () {
     function AdminRoutingModule() {
     }
+    AdminRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                router_1.RouterModule.forChild(adminRoutes)
+            ],
+            exports: [
+                router_1.RouterModule
+            ]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AdminRoutingModule);
     return AdminRoutingModule;
 }());
-AdminRoutingModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            router_1.RouterModule.forChild(adminRoutes)
-        ],
-        exports: [
-            router_1.RouterModule
-        ]
-    }),
-    __metadata("design:paramtypes", [])
-], AdminRoutingModule);
 exports.AdminRoutingModule = AdminRoutingModule;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.

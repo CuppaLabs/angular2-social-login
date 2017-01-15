@@ -54,10 +54,12 @@ can be found in the LICENSE file at http://angular.io/license
 var core_1 = __webpack_require__(1);
 var admin_services_1 = __webpack_require__(969);
 var profile_interface_1 = __webpack_require__(973);
+var auth_service_1 = __webpack_require__(178);
 __webpack_require__(124);
 var AdminDashboardComponent = (function () {
-    function AdminDashboardComponent(adminService) {
+    function AdminDashboardComponent(adminService, authService) {
         this.adminService = adminService;
+        this.authService = authService;
         this.user = new profile_interface_1.User();
     }
     AdminDashboardComponent.prototype.ngOnInit = function () {
@@ -73,14 +75,17 @@ var AdminDashboardComponent = (function () {
             console.log(err);
         });
     };
+    AdminDashboardComponent.prototype.logout = function () {
+        this.authService.logout();
+    };
     AdminDashboardComponent = __decorate([
         core_1.Component({
-            template: "\n    <p>User ID: {{ user._id}}</p>\n    <p>Name: {{ user.displayName}}</p>\n    <p>Email: {{ user.email}}</p>\n    <img src=\"{{ user.picture}}\" />\n    <p>Provider: {{ user.provider}}</p>\n    <p>Provider ID: {{ user.provider_id}}</p>\n    \n  "
+            template: "\n    <div class=\"row col-md-8 col-md-offset-2 profile-section\">\n    <div class=\"col-md-8\">\n      <div class=\"col-md-12 profile-header\">\n        <div class=\"col-md-1 provider-logo\" [ngClass]=\"{'fb': user.provider == 'facebook', 'google': user.provider == 'google','linkedin': user.provider == 'linkedin' }\">\n          <span *ngIf=\" user.provider == 'facebook'\" class=\"fa fa-facebook\"></span>\n          <span *ngIf=\" user.provider == 'google'\" class=\"fa fa-google\"></span>\n          <span *ngIf=\" user.provider == 'linkedin'\" class=\"fa fa-linkedin\"></span>\n        </div>\n        <div class=\"col-md-9\"><b>Welcome</b> {{ user.displayName}}</div> \n        <div class=\"col-md-2\"><a class=\"logout-btn\" (click)=\"logout()\" *ngIf=\"authService.isLoggedIn()\">Logout</a></div>\n      </div>\n      <table class=\"table\"> \n      <tbody> \n      <tr> <td><b>User ID:</b></td> <td> {{ user._id}}</td> </tr> \n      <tr><td><b>Name:</b></td> <td> {{ user.displayName}}</td> </tr> \n      <tr><td><b>Email:</b></td> <td>{{ user.email}}</td> </tr> \n       <tr><td><b>Provider:</b></td> <td>{{ user.provider}}</td> </tr> \n        <tr><td><b>Provider ID:</b></td> <td>{{ user.provider_id}}</td> </tr> \n      </tbody> \n      </table>\n    </div>\n    <div class=\"col-md-4\">\n      <img src=\"{{ user.picture}}\" />\n    </div>\n    </div>\n    \n    \n  "
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof admin_services_1.AdminService !== 'undefined' && admin_services_1.AdminService) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof admin_services_1.AdminService !== 'undefined' && admin_services_1.AdminService) === 'function' && _a) || Object, (typeof (_b = typeof auth_service_1.AuthService !== 'undefined' && auth_service_1.AuthService) === 'function' && _b) || Object])
     ], AdminDashboardComponent);
     return AdminDashboardComponent;
-    var _a;
+    var _a, _b;
 }());
 exports.AdminDashboardComponent = AdminDashboardComponent;
 /*
@@ -103,7 +108,7 @@ var AdminComponent = (function () {
     }
     AdminComponent = __decorate([
         core_1.Component({
-            template: "\n    <h3>ADMIN</h3>\n    <nav>\n      <a routerLink=\"./\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"{ exact: true }\">Dashboard</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
+            template: "\n   <!-- <nav>\n      <a routerLink=\"./\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"{ exact: true }\">Dashboard</a>\n    </nav> -->\n    <router-outlet></router-outlet>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AdminComponent);

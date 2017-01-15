@@ -15,23 +15,23 @@ import {  Router,Route, NavigationStart,
 
 @Injectable()
 export class AuthService implements CanActivate, CanActivateChild, CanLoad {
-
+ private baseURL = 'https://murmuring-waters-53650.herokuapp.com';
  private authConfig = {
 
    "linkedin":{
-     "authEndpoint":"https://murmuring-waters-53650.herokuapp.com/auth/linkedin",
+     "authEndpoint": this.baseURL+"/auth/linkedin",
      "clientId":"8176r44lz2ewos",
-     "redirectURI" : "https://murmuring-waters-53650.herokuapp.com/admin"
+     "redirectURI" : this.baseURL+"/admin"
    },
    "facebook":{
-     "authEndpoint":"https://murmuring-waters-53650.herokuapp.com/auth/facebook",
+     "authEndpoint": this.baseURL+"/auth/facebook",
      "clientId":"929055083862567",
-     "redirectURI" : "https://murmuring-waters-53650.herokuapp.com/admin"
+     "redirectURI" : this.baseURL+"/admin"
    },
    "google":{
-     "authEndpoint":"https://murmuring-waters-53650.herokuapp.com/auth/google",
+     "authEndpoint": this.baseURL+"/auth/google",
      "clientId":"77954512562-eftl8up04q1g3aha2mjg5h6bgel9svkk.apps.googleusercontent.com",
-     "redirectURI" : "https://murmuring-waters-53650.herokuapp.com/admin"
+     "redirectURI" : this.baseURL+"/admin"
    }
 
  };

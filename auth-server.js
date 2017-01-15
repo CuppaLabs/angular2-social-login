@@ -193,7 +193,7 @@ app.post('/auth/signup', function(req, res) {
  */
 app.post('/auth/google', function(req, res) {
   var accessTokenUrl = 'https://www.googleapis.com/oauth2/v4/token';
-  var peopleApiUrl = 'https://www.googleapis.com/oauth2/v1/userinfo?fields=email%2Cfamily_name%2Cgender%2Cgiven_name%2Chd%2Cid%2Clink%2Clocale%2Cname%2Cpicture%2Cverified_email';
+  var peopleApiUrl = 'https://www.googleapis.com/oauth2/v2/userinfo?fields=email%2Cfamily_name%2Cgender%2Cgiven_name%2Chd%2Cid%2Clink%2Clocale%2Cname%2Cpicture%2Cverified_email';
   var params = {
     code: req.body.code,
     client_id: req.body.clientId,
@@ -204,7 +204,7 @@ app.post('/auth/google', function(req, res) {
    var token_request='code='+req.body.code+
         '&client_id='+req.body.clientId+
         '&client_secret='+config.GOOGLE_SECRET+
-        '&redirect_uri=https%3A%2F%2Fmurmuring-waters-53650.herokuapp.com%2Fadmin'+
+        '&redirect_uri='+req.body.redirectUri+
         '&grant_type=authorization_code';
     var request_length = token_request.length;
   // Step 1. Exchange authorization code for access token.
@@ -397,7 +397,7 @@ app.post('/auth/linkedin', function(req, res) {
  |--------------------------------------------------------------------------
  */
 app.post('/auth/facebook', function(req, res) {
-  var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name','picture'];
+  var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name','picture.type(large)'];
   var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
   var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + fields.join(',');
   var params = {
@@ -428,7 +428,7 @@ app.post('/auth/facebook', function(req, res) {
               user.provider_id = profile.id;
               user.provider = "facebook";
               user.email = profile.email;
-              user.picture = profile.picture.data.url.replace('sz=50', 'sz=200');
+              user.picture = profile.picture.data.url;
               user.displayName = profile.name;
               User.findOneAndUpdate({email:existingUser.email},user, function(err) {
                 var token = createJWT(existingUser);
@@ -440,7 +440,7 @@ app.post('/auth/facebook', function(req, res) {
               user.provider_id = profile.id;
               user.provider = "facebook";
               user.email = profile.email;
-              user.picture = profile.picture.data.url.replace('sz=50', 'sz=200');
+              user.picture = profile.picture.data.url;
               user.displayName = profile.name;
               user.save(function(err) {
                 var token = createJWT(user);

@@ -7,12 +7,19 @@ import { ActivatedRoute }       from '@angular/router';
 
 @Component({
   template: `
-    <h2>LOGIN</h2>
-    <p>
-      <button (click)="linkedinLogin()">LinkedIn</button>
-      <button (click)="facebookLogin()">Facebook</button>
-      <button (click)="googleLogin()">Google</button>
-    </p>`
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+      <button (click)="googleLogin()" class="btn btn-block btn-social btn-google">
+          <span class="fa fa-google"></span> Sign in with Google
+      </button>
+      <button (click)="facebookLogin()" class="btn btn-block btn-social btn-facebook">
+          <span class="fa fa-facebook"></span> Sign in with Facebook
+      </button>
+      <button (click)="linkedinLogin()" class="btn btn-block btn-social btn-linkedin">
+          <span class="fa fa-linkedin"></span> Sign in with LinkedIn
+      </button>
+      </div>
+    </div>`
 })
 export class LoginComponent {
   message: string;

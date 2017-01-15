@@ -605,21 +605,22 @@ var AuthService = (function () {
         var _this = this;
         this._http = _http;
         this.router = router;
+        this.baseURL = 'https://murmuring-waters-53650.herokuapp.com';
         this.authConfig = {
             "linkedin": {
-                "authEndpoint": "https://murmuring-waters-53650.herokuapp.com/auth/linkedin",
+                "authEndpoint": this.baseURL + "/auth/linkedin",
                 "clientId": "8176r44lz2ewos",
-                "redirectURI": "https://murmuring-waters-53650.herokuapp.com/admin"
+                "redirectURI": this.baseURL + "/admin"
             },
             "facebook": {
-                "authEndpoint": "https://murmuring-waters-53650.herokuapp.com/auth/facebook",
+                "authEndpoint": this.baseURL + "/auth/facebook",
                 "clientId": "929055083862567",
-                "redirectURI": "https://murmuring-waters-53650.herokuapp.com/admin"
+                "redirectURI": this.baseURL + "/admin"
             },
             "google": {
-                "authEndpoint": "https://murmuring-waters-53650.herokuapp.com/auth/google",
+                "authEndpoint": this.baseURL + "/auth/google",
                 "clientId": "77954512562-eftl8up04q1g3aha2mjg5h6bgel9svkk.apps.googleusercontent.com",
-                "redirectURI": "https://murmuring-waters-53650.herokuapp.com/admin"
+                "redirectURI": this.baseURL + "/admin"
             }
         };
         this.configObj = { "authEndpoint": "", "clientId": "", "redirectURI": "" };
@@ -1653,7 +1654,7 @@ var LoginComponent = (function () {
     };
     LoginComponent = __decorate([
         core_1.Component({
-            template: "\n    <h2>LOGIN</h2>\n    <p>\n      <button (click)=\"linkedinLogin()\">LinkedIn</button>\n      <button (click)=\"facebookLogin()\">Facebook</button>\n      <button (click)=\"googleLogin()\">Google</button>\n    </p>"
+            template: "\n    <div class=\"row\">\n      <div class=\"col-md-4 col-md-offset-4\">\n      <button (click)=\"googleLogin()\" class=\"btn btn-block btn-social btn-google\">\n          <span class=\"fa fa-google\"></span> Sign in with Google\n      </button>\n      <button (click)=\"facebookLogin()\" class=\"btn btn-block btn-social btn-facebook\">\n          <span class=\"fa fa-facebook\"></span> Sign in with Facebook\n      </button>\n      <button (click)=\"linkedinLogin()\" class=\"btn btn-block btn-social btn-linkedin\">\n          <span class=\"fa fa-linkedin\"></span> Sign in with LinkedIn\n      </button>\n      </div>\n    </div>"
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof router_2.ActivatedRoute !== 'undefined' && router_2.ActivatedRoute) === 'function' && _a) || Object, (typeof (_b = typeof auth_service_1.AuthService !== 'undefined' && auth_service_1.AuthService) === 'function' && _b) || Object, (typeof (_c = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _c) || Object])
     ], LoginComponent);
@@ -3982,13 +3983,10 @@ var AppComponent = (function () {
     function AppComponent(authService) {
         this.authService = authService;
     }
-    AppComponent.prototype.logout = function () {
-        this.authService.logout();
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1 class=\"title\">Angular 2 OAuth Example</h1>\n    <button (click)=\"logout()\" *ngIf=\"authService.isLoggedIn()\">Logout</button>\n    <h1 *ngIf=\"authService.loading\">Logging in.. Please Wait...</h1>\n    <router-outlet></router-outlet>\n  "
+            template: "\n    <nav class=\"navbar navbar-default navbar-fixed-top\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"#\">Cuppa OAuth2</a>\n        </div>\n        <div id=\"navbar\" class=\"navbar-collapse collapse\">\n        </div><!--/.navbar-collapse -->\n      </div>\n    </nav>\n    <div class=\"jumbotron\">\n      <div class=\"container\">\n        <h2 class=\"title\">Angular2 OAuth2</h2> \n        <h3 class=\"sub-title\"> Social Login Demo</h3>\n          <h1 *ngIf=\"authService.loading\">Logging in.. Please Wait...</h1>\n          <router-outlet></router-outlet>\n      </div>\n    </div>\n\n  "
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof auth_service_1.AuthService !== 'undefined' && auth_service_1.AuthService) === 'function' && _a) || Object])
     ], AppComponent);

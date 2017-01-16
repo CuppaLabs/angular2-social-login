@@ -1,14 +1,14 @@
 {
-  "name": "angular2-webpack-starter",
-  "version": "5.1.1",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
+  "name": "cuppa-angular2-oauth",
+  "version": "1.0.0",
+  "description": "A light weight angular 2 , nodejs, mongo DB social login for facebook, google and linkedin.",
   "keywords": [
-    "angular2",
-    "webpack",
-    "typescript"
+    "angular2 social login",
+    "angular2 oauth",
+    "angular2 oauth2"
   ],
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
+  "author": "Pradeep Kumar Terli",
+  "homepage": "https://github.com/CuppaLabs/angular2-social-login",
   "license": "MIT",
   "scripts": {
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
@@ -147,10 +147,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/CuppaLabs/angular2-social-login.git"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/CuppaLabs/angular2-social-login/issues"
   },
   "engines": {
     "node": ">= 4.2.1",

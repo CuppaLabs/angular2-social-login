@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Angular2 OAuth Social Login</title>
+
+  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="css/custom-styles.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top" style="box-shadow: 0px 0px 7px #ccc;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Angular2 OAuth</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="./">Documentation <span class="sr-only">(current)</span></a></li>
+              <li><a href="#architecture">Architecture</a></li>
+              <li><a href="#flowchart">FlowChart</a></li>
+              <li><a href="#technologies">Technologies</a></li>
+              <li><a href="https://github.com/CuppaLabs/angular2-social-login">Github</a></li>
+              <li><span class="bt-group"><a style="margin-top:8px;" href="https://murmuring-waters-53650.herokuapp.com/login" target="_blank" type="button" class="btn btn-success"><i class="fa fa-jsfiddle" aria-hidden="true"></i><span class="hidden-xs">  Live Demo</span></a></span></li>
+              <li><span class="bt-group" style="padding-left: 5px;"><a style="margin-top:8px;" href="https://github.com/CuppaLabs/angular2-social-login/archive/master.zip" type="button" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i><span class="hidden-xs"> Download </span></a></span></li>
+            </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="container documentation-container">
+
+      <div class="row">
+          <div class="col-md-3 left-section ">
+              <nav class="bs-docs-sidebar hidden-print hidden-sm hidden-xs"> 
+                  <ul class="nav bs-docs-sidenav"> 
+                      <li><a href=#introduction>Introduction</a></li>
+                       <li><a href=#architecture>Architecture</a></li>
+                      <li><a href=#getStarted>Getting Started</a></li>
+                      <li><a href=#installation>Installation</a></li>
+                      <li><a href=#angular-config>Angular Configuration</a></li>
+                      <li><a href=#glyphicons>Node Server Configuration</a></li>
+                      <li><a href=#glyphicons>Build and Deployment</a></li>
+                      <li><a href=#glyphicons>Create Google Application</a></li>
+                      <li><a href=#glyphicons>Create Facebook Application</a></li>
+                      <li><a href=#glyphicons>Create LinkedIn Application</a></li>
+                  </ul>
+              </nav>
+          </div>
+          <div class="col-md-9 right-section">
+               <div class="row" id="introduction">
+                    <h1 class="page-header">Introduction</h1>
+                    <p>  
+                        It is often required that, a user register's or sign up to login to a particular website or application. 
+                        It is a tedious job to fill those long forms with user basic details. 
+                        To avoid filling long forms, Cuppa Angular 2 OAuth provides a module to login using social OAuth services like 
+                        google OAtuh, Facebook OAuth and LinkedIn OAuth.
+                        Using this your application will be able to recieve basic details of the user from social networking sites and you can store in your application environment.
+                    </p>
+                </div>
+                <div class="row" id="architecture">
+                    <h1 class="page-header">Architecture</h1>
+                    <img style="width: 100%;" src="images/oauth-architecture.png" />
+                </div>
+                <div class="row" id="getStarted">
+                    <h1 class="page-header">Getting Started</h1>
+                    <p> 
+                          To get started using the Cuppa OAuth Social Login, the following pre requisites needs to be met with.</br></br>
+                          <b>1) </b> Knowledge of Angular 2 and latest Angular 2 version. Refer <a href="#">Setup AngularJS</a></br></br>
+                          <b>2) </b> Knowledge of NodeJS and latest version installed in your environment. Refer <a href="#">Setup NodeJS</a></br></br>
+                          <b>3) </b> Installed MongoDB and knowledge of setting up. Refer <a href="#">Setup MongoDB</a></br></br>
+                          <b>4) </b> Set up Angular Client, App Server(your node server), Mongo DB. 
+                    </p>
+                </div>
+                <div class="row" id="installation">
+                    <h1 class="page-header">Installation</h1>
+                    <p>
+                        Follow the steps to install the Cuppa OAuthcode in your environment.</br></br>
+                        <b>1) </b> Clone <b>https://github.com/CuppaLabs/angular2-social-login.git </b> repository from github.</br></br>
+                        <b>2)</b> $ npm install - To install all the dependencies</br></br>
+                        <b>3)</b> $ npm run auth-server - To start the server (Run only when the entire application is setup).   
+                    </p>
+                </div>
+                <div class="row" id="angular-config">
+                    <h1 class="page-header">Angular Configuration</h1>
+                    <p>   
+                        To configure angular, the urls need to be changed to your environment url endpoints.</br></br>
+                        <b>1)</b> Go to src/app/auth.service.ts</br></br>
+                        <b>2)</b> Replace the baseURL with your endpoint(http://localhost:500, to run locally), as shown in the below snippet</br></br>
+                        <b>3)</b> Create your social app with Google/Facebook/LinkedIn and get you client ID</br></br>
+                        <b>4)</b> Replace the Client ID in the authConfig Object as shown below in the snippet.(blurred area)</br></br>
+                        <b>4)</b> redirectURI - the redirect url configured in the social networking app which redirects to your page on that URL, on successful login</br></br>
+                        <b>5)</b> authEndpoint - Your application server endpoint where it hits for authentication. </br></br>
+                            <img style="width:100%;" src="images/angular-config.png"/>
+                    </p>
+                </div>
+                 <div class="row" id="node-config">
+                    <h1 class="page-header">Node Server Configuration</h1>
+                    <p>   
+                        To configure Node Server, follow the below steps </br></br>
+                        <b>1)</b> Go to /auth-config.js</br></br>
+                        <b>2)</b> Create your social app with Google/Facebook/LinkedIn and get the client secret.</br></br>
+                        <b>3)</b> Replace the client secret with your app's client secret as show in the below snippet. (Blurred my credentials). Place your credentials there.</br></br>
+                        <img style="width:100%;" src="images/node-config.png"/>
+                    </p>
+                </div>
+                <div class="row" id="mongo-config">
+                    <h1 class="page-header">Mongo DB Configuration</h1>
+                    <p>   
+                        To configure Node Server with mongo DB details, follow the below steps </br></br>
+                        <b>1)</b> Install Mongo DB locally and start or deploy on any cloud platform</br></br>
+                        <b>2)</b> Go to /auth-config.js</br></br>
+                        <b>3)</b> Replace the username, password, mongo url and DB name. Form the url as follows and replcae as shown in the below snippet.</br></br>
+                        <img style="width:100%;" src="images/node-config.png"/>
+                    </p>
+                </div>
+                 <div class="row" id="buil-deploy">
+                    <h1 class="page-header">Build, Deploy and Run</h1>
+                    <p>   
+                        Ahh !!! Now you are ready to make your app up and running.</br></br>
+                        1) <b>Start MongoDB Server</b></br></br>
+                        2) <b> $ npm run auth-server </b></br></br>
+                        3) Visit <b>http://localhost:5000</b> to access your app running in your local. This should be the baseURL you configured in the angular configuration section.</b></br>
+                        Deploy to your application server or any cloud platform. 
+
+
+                    </p>
+                </div>
+                 <div class="row" id="google-app">
+                    <h1 class="page-header">Create Google Application</h1>
+                    <p>   
+                        <b>1) </b> Visit <a href="https://console.developers.google.com/apis">Google API Console</a></br></br>
+                        <b>2) </b> Go to "Credentials" tab.</br></br>
+                        <b>3) </b> Select "OAuth Client ID"" from "Create credentials"" tab.</br></br>
+                        <b>4) </b> Select "web application"" option.</br></br>
+                        <b>5) </b> Provide your application name, URL of your app origin and redirect URL and Click Create.</br></br>
+                        <b>6) </b> On creating successfully, you will see the following screen with client ID and client secret.</br></br>
+                        <img style="width:100%;" src="images/google-oauth.png"/>
+                        
+                    </p>
+                </div>
+                 <div class="row" id="facebook-app">
+                    <h1 class="page-header">Create Facebook Application</h1>
+                    <p>   
+                        <b>1) </b> Visit <a href="https://developers.facebook.com/apps/">Facebook Apps</a></br></br>
+                        <b>2) </b> Click "Add a New App" button.Fill the details and click "Create ID"</br></br>
+                            <img style="width:100%;" src="images/facebook-oauth-1.png"/></br></br>
+                        <b>3) </b> Select "Facebook Login" from product list and click "Get Started" </br></br>
+                        <b>4) </b> Provide redirect URL.</br></br>
+                        <b>6) </b> On creating successfully, you will see the following screen with client ID and client secret.</br></br>
+                        <img style="width:100%;" src="images/facebook-oauth-2.png"/> 
+                    </p>
+                </div>
+                 <div class="row" id="linkedin-app">
+                    <h1 class="page-header">Create LinkedIn Application</h1>
+                    <p>   
+                    </p>
+                </div>
+          </div>
+          
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 Cuppa Labs</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+  <!--  <div class="ad-section">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:320px;height:100px"
+            data-ad-client="ca-pub-4525567075133342"
+            data-ad-slot="1008857902"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>-->
+  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
+  <script>
+    (function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=r;A[l]=A[l]||function(){
+    (A[l].q=A[l].q||[]).push(arguments)},A[l].l=1*new Date();a=n.createElement(g),
+    r=n.getElementsByTagName(g)[0];a.async=1;a.src=u;r.parentNode.insertBefore(a,r)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-71073175-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

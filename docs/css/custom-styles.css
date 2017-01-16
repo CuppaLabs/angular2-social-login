@@ -10,23 +10,29 @@ body{
     background-color: #ffffff;
     border-color: #ffffff;
     border-radius: 0px;
-    min-height: 40px;
     margin: 0px;
     border: 0px;
 }
 .navbar-brand {
-    height: 40px;
-    padding: 10px 15px;
 }
 .jumbotron{
   text-align: center;
   margin-bottom: 0px;
-  padding-top: 45px;
+  background: #2d3673;
+  color: #fff;
+  padding-bottom: 15px;
 }
 .jumbotron > p{
   font-size: 18px;
   font-weight: 300;
   color: #656565;
+}
+.jumbotron h2{
+   font-weight: 300; 
+}
+.jumbotron h4{
+   padding:  15px; 
+   font-weight: 300; 
 }
 .component-title{
   font-weight: 400;
@@ -60,6 +66,7 @@ iframe{
 }
 @media (min-width: 768px){
     .component-title{ 
+      margin-top: 45px;
     }
     .nav-pills > li > a{
       padding: 10px 15px;
@@ -75,6 +82,7 @@ iframe{
   background: -webkit-linear-gradient(#42a1ec, #0070c9);
   background: -o-linear-gradient(#42a1ec, #0070c9);
   background: linear-gradient(#42a1ec, #0070c9);
+  border: none;
 }
 .ad-section{
     display: block;
@@ -87,9 +95,34 @@ iframe{
 .architecture figure, .flowchart figure{
     text-align: center;
 }
+.architecture img, .flowchart img{
+    margin: 0px auto;
+}
 .flowchart figure img{
     width: 40%;
 }
 .page-header{
     text-align: center;
+    margin: 60px 0 20px;
+}
+.documentation-container{
+    padding-top: 50px;
+}
+.documentation-container .page-header{
+    text-align: left;
+}
+.left-section{
+    padding-left: 0px;
+}
+.left-section .bs-docs-sidebar{
+    background: #fff;
+    margin-top: 15px;
+}
+.right-section{
+    background: #fff;
+    margin-top: 15px;
+    padding: 25px;
+}
+.right-section .row{
+    margin: 0px;
 }

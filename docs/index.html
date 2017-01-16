@@ -30,6 +30,14 @@
           <a class="navbar-brand" href="#">Angular2 OAuth</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="./">Documentation <span class="sr-only">(current)</span></a></li>
+              <li><a href="#architecture">Architecture</a></li>
+              <li><a href="#flowchart">FlowChart</a></li>
+              <li><a href="#technologies">Technologies</a></li>
+              <li><a href="https://github.com/CuppaLabs/angular2-social-login">Github</a></li>
+
+            </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
@@ -39,12 +47,11 @@
       <div class="container">
         <h1 class="component-title">Angular2 OAuth</h1>
         <h2>Social Login Script</h2>
+        <h4>PRADEEP TERLI PRODUCTION </h4>
 
         <p class="bt-group">
-            <a href="https://murmuring-waters-53650.herokuapp.com/login" target="_blank" type="button" class="btn btn-success"><i class="fa fa-jsfiddle" aria-hidden="true"></i><span class="hidden-xs">  Live Demo</span></a>
-            <a href="https://github.com/CuppaLabs/angular2-social-login/archive/master.zip" type="button" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i><span class="hidden-xs"> Download </span></a>
-            <a href="https://github.com/CuppaLabs/angular2-social-login" target="_blank" type="button" class="btn btn-success"><i class="fa fa-github" aria-hidden="true"></i><span class="hidden-xs">  Github</span></a>
-            <a href="https://github.com/CuppaLabs/angular2-social-login" target="_blank" type="button" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i><span class="hidden-xs">  Documentation</span></a>
+            <a href="https://murmuring-waters-53650.herokuapp.com/login" target="_blank" type="button" class="btn btn-success btn-lg"><i class="fa fa-jsfiddle" aria-hidden="true"></i><span class="hidden-xs">  Live Demo</span></a>
+            <a href="https://github.com/CuppaLabs/angular2-social-login/archive/master.zip" type="button" class="btn btn-success btn-lg"><i class="fa fa-download" aria-hidden="true"></i><span class="hidden-xs"> Download </span></a>
         </p>
       </div>
     </div>
@@ -68,17 +75,17 @@
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
       </div> -->
-      <div class="row architecture">
+      <div class="row architecture" id="architecture">
           <h1 class="page-header">Architecture</h1>
           <p>
               
           </p>
           <figure>
-              <img src="images/oauth-architecture.png" />
+              <img class="img-responsive" src="images/oauth-architecture.png" />
           </figure>
           
       </div>
-      <div class="row flowchart">
+      <div class="row flowchart" id="flowchart">
           <h1 class="page-header">Flowchart</h1>
           <p>
               
@@ -88,10 +95,35 @@
           </figure>
           
       </div>
+      <div class="row technologies" id="technologies">
+         
+          <h1 class="page-header" >Technologies</h1>
+          
+          <div class="col-md-6">
+            <figure>
+                <img class="img-responsive" src="images/oauth-technologies.png" />
+            </figure>
+          </div>
+          <div class="col-md-6">
+              <table class="table table-responsive">
+                  <tbody>
+                  <tr>
+                    <td width="25%"><b>Angular 2</b></td>
+                    <td>To develope the front end UI for login screen and authentication of routes implementation</td>
+                  </tr>
+                  <tr><td><b>Node JS</b></td><td>Application server for auth routes and backend OAuth implementation</td></tr>
+                  <tr><td><b>Mongo DB</b></td><td>To store user credentials and social profile details.</td></tr>
+                  <tr><td><b>OAuth 2.0</b></td><td>OAuth 2.0 framework for the auth workflow</td></tr>
+                  <tr><td><b>HTML5, CSS3, JS</b></td><td>Web Technologies for front end.</td></tr>
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
       <hr>
 
       <footer>
-        <p>&copy; 2016 Company, Inc.</p>
+        <p>&copy; 2016 Cuppa Labs</p>
       </footer>
     </div> <!-- /container -->
 

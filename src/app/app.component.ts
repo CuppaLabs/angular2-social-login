@@ -13,7 +13,9 @@ import { AuthService }      from './auth.service';
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Cuppa OAuth2</a>
+          <a class="navbar-brand" href="#">
+          <img alt="Brand" src="assets/img/cuppa-logo.png">
+          Cuppa OAuth2</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         </div><!--/.navbar-collapse -->

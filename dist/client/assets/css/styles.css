@@ -264,3 +264,9 @@ iframe{
     font-size: 15px;
     transform: scale(1.5);
 }
+.navbar-brand img{
+    float: left;
+    width: 26px;
+    margin-top: -3px;
+    margin-right: 5px;
+}

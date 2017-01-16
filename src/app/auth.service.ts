@@ -15,7 +15,7 @@ import {  Router,Route, NavigationStart,
 
 @Injectable()
 export class AuthService implements CanActivate, CanActivateChild, CanLoad {
- private baseURL = 'https://murmuring-waters-53650.herokuapp.com';
+ private baseURL = 'https://cuppa-angular2-oauth.herokuapp.com';
  private authConfig = {
 
    "linkedin":{

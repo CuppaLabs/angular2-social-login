@@ -14,7 +14,7 @@ export class AdminService {
      constructor (private _http: InterceptorService) {
          
      }
-     private commentsUrl = 'https://murmuring-waters-53650.herokuapp.com/api/profile'; 
+     private commentsUrl = 'https://cuppa-angular2-oauth.herokuapp.com/api/profile'; 
      
 getProfile() : Observable<any> {
 

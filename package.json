@@ -1,6 +1,6 @@
 {
   "name": "cuppa-angular2-oauth",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A light weight angular 2 , nodejs, mongo DB social login for facebook, google and linkedin.",
   "keywords": [
     "angular2 social login",

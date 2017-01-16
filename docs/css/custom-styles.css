@@ -130,3 +130,9 @@ iframe{
 footer{
     text-align: center;
 }
+.navbar-brand img{
+    float: left;
+    width: 26px;
+    margin-top: -3px;
+    margin-right: 5px;
+}

@@ -605,7 +605,7 @@ var AuthService = (function () {
         var _this = this;
         this._http = _http;
         this.router = router;
-        this.baseURL = 'https://murmuring-waters-53650.herokuapp.com';
+        this.baseURL = 'https://cuppa-angular2-oauth.herokuapp.com';
         this.authConfig = {
             "linkedin": {
                 "authEndpoint": this.baseURL + "/auth/linkedin",

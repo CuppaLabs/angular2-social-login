@@ -139,7 +139,7 @@ var AdminService = (function () {
     // Resolve HTTP using the constructor
     function AdminService(_http) {
         this._http = _http;
-        this.commentsUrl = 'https://murmuring-waters-53650.herokuapp.com/api/profile';
+        this.commentsUrl = 'https://cuppa-angular2-oauth.herokuapp.com/api/profile';
     }
     AdminService.prototype.getProfile = function () {
         // ...using get request

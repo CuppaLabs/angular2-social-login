@@ -72,7 +72,7 @@ To configure Node Server with mongo DB details, follow the below steps
 3) Replace the username, password, mongo url and DB name. Form the url as follows and replcae as shown in the below snippet.
 ![www.cuppalabs.com](https://raw.githubusercontent.com/CuppaLabs/angular2-social-login/master/docs/images/node-config.png)
 
-## Build, Deploy and Run
+## Locally Build and Run
 Ahh !!! Now you are ready to make your app up and running.
 
 1) Start MongoDB Server

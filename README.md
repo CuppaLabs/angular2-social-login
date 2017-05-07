@@ -9,7 +9,7 @@ It is often required that, a user register's or sign up to login to a particular
 ![www.cuppalabs.com](https://raw.githubusercontent.com/CuppaLabs/angular2-social-login/master/docs/images/oauth-banner.png)
 
 
-# [Documentation](https://cuppalabs.github.io/angular2-social-login/documentation.html) | [Demo](https://cuppa-angular2-oauth.herokuapp.com/login).
+# [Documentation](https://cuppalabs.github.io/ng22-social-login/documentation.html) | [Demo](https://cuppa-angular2-oauth.herokuapp.com/login).
 
 ## Locally Build and Run
 - Clone git repository.

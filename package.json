@@ -1,6 +1,6 @@
 {
-  "name": "angular2-social-login",
-  "version": "2.0.1",
+  "name": "ng2-social-login",
+  "version": "2.0.2",
   "description": "A light weight angular 2 , nodejs, mongo DB social login for facebook, google and linkedin.",
   "keywords": [
     "angular2 social login",

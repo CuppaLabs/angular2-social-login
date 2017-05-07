@@ -4,12 +4,12 @@
 ### Social Login Script for Facebook, Google, LinkedIn
 It is often required that, a user register's or sign up to login to a particular website or application. It is a tedious job to fill those long forms with user basic details. To avoid filling long forms, Cuppa Angular 2 OAuth provides a module to login using social OAuth services like google OAtuh, Facebook OAuth and LinkedIn OAuth. Using this your application will be able to recieve basic details of the user from social networking sites and you can store in your application environment.
 
-# [Documentation](https://cuppalabs.github.io/angular2-social-login/documentation.html) | [Demo](https://cuppa-angular2-oauth.herokuapp.com/login).
+# [Documentation](https://cuppalabs.github.io/ng2-social-login/documentation) | [Demo](https://cuppa-angular2-oauth.herokuapp.com/login).
 
 ![www.cuppalabs.com](https://raw.githubusercontent.com/CuppaLabs/angular2-social-login/master/docs/images/oauth-banner.png)
 
 
-# [Documentation](https://cuppalabs.github.io/ng22-social-login/documentation.html) | [Demo](https://cuppa-angular2-oauth.herokuapp.com/login).
+# [Documentation](https://cuppalabs.github.io/ng2-social-login/documentation) | [Demo](https://cuppa-angular2-oauth.herokuapp.com/login).
 
 ## Locally Build and Run
 - Clone git repository.

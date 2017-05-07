@@ -1,0 +1,41 @@
+.contact-details{
+    padding: 0px;
+}
+.contact-details li{
+    display: inline-block;
+    padding: 0px;
+}
+.exp-details{
+
+}
+.exp-details li{
+    padding: 0px 0px 10px 0px;
+    width: 49%;
+}
+.job-description{
+    padding: 0px 15px;
+}
+.job-description li{
+    
+}
+.badge{
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    margin: 5px 0px;
+    font-weight: 500;
+    color: #000;
+}
+.page-header{
+    margin-top: 35px;
+    border-bottom: 3px solid #000;
+}
+#introduction .contact-details{
+    margin-top: 15px;
+}
+.fa{
+    margin-right: 10px;
+}
+.documentation-container{
+    padding-top: 0px;
+}

@@ -4,7 +4,7 @@ import { Observable }           from 'rxjs/Observable';
 import { PreloadSelectedModules } from '../selective-preload-strategy';
 import {AdminService} from './admin.services'
 import { User } from './profile.interface';
-import { AuthService }      from '../auth.service';
+import { AuthService }      from '../cuppaOAuth/auth.service';
 import 'rxjs/add/operator/map';
 
 @Component({

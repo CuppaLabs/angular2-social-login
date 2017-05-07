@@ -71,7 +71,7 @@ if (app.get('env') === 'production') {
     protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
   });
 }
-app.use(express.static(path.join(__dirname, '/dist/client')));
+app.use(express.static(path.join(__dirname, '/dist')));
 
 /*
  |--------------------------------------------------------------------------
@@ -935,7 +935,7 @@ app.post('/auth/unlink', ensureAuthenticated, function(req, res) {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/client/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 /*

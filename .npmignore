@@ -39,3 +39,16 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+
+.vscode
+protractor.conf.js
+tslint
+.angular-cli.json
+.github
+/docs
+/e2e
+.npmignore
+karma.conf.js
+src/*
+src/app/*
+!src/app/cuppaOAuth

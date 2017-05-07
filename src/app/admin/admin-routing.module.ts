@@ -3,14 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AdminComponent }           from './admin.component';
 import { AdminDashboardComponent }  from './admin-dashboard.component';
-import { ManageCrisesComponent }    from './manage-crises.component';
-import { ManageHeroesComponent }    from './manage-heroes.component';
 
-import { AuthService }                from '../auth.service';
+import { AuthService }                from '../cuppaOAuth/auth.service';
 
 const adminRoutes: Routes = [
   {
-    path: '',
+    path: 'admin',
     component: AdminComponent,
     canActivate: [AuthService],
     children: [
@@ -18,8 +16,6 @@ const adminRoutes: Routes = [
         path: '',
         canActivateChild: [AuthService],
         children: [
-          { path: 'crises', component: ManageCrisesComponent },
-          { path: 'heroes', component: ManageHeroesComponent },
           { path: '', component: AdminDashboardComponent }
         ]
       }

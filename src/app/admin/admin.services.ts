@@ -23,7 +23,7 @@ getProfile() : Observable<any> {
                         // ...and calling .json() on the response to return data
                          .map((res:Response) => res.json())
                          //...errors if any
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+                         .catch((error:any) => Observable.throw(error || 'Server error'));
 
      }
 }

@@ -1,0 +1,125 @@
+
+.title{
+    padding: 10px 0px 0px 0px;
+    text-align: center;
+    font-size: 42px;
+}
+.jumbotron{
+    background: transparent;
+}
+.jumbotron .btn{
+    margin-bottom: 15px;
+}
+.sub-title{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+
+html{
+	height: 100%;
+}
+body{
+	background-color: #f7f7f7;
+	height: 100%;
+  font-family: 'Roboto',sans-serif;
+}
+.navbar-default {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    border-radius: 0px;
+    min-height: 40px;
+    margin: 0px;
+    border: 0px;
+}
+.navbar-brand {
+    height: 40px;
+    padding: 10px 15px;
+}
+.jumbotron > p{
+  font-size: 18px;
+  font-weight: 300;
+  color: #656565;
+}
+.component-title{
+  font-size: 50px !important;
+  font-weight: 300;
+
+}
+.component-title > span{
+  font-size: 50%;
+}
+iframe{
+	width: 100%;
+	height: 100%;
+}
+.nav-pills > li{
+  display: inline-block !important;
+  float: inherit;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+  background: none;
+  color: #a9a9a9;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+  text-decoration: underline;
+  background: none;
+}
+.nav-pills > li > a{
+  font-weight: 300;
+}
+.bt-group{
+  padding: 25px 0px;
+}
+.bt-group .btn {
+    background: -webkit-linear-gradient(#42a1ec, #0070c9);
+    background: -o-linear-gradient(#42a1ec, #0070c9);
+    background: linear-gradient(#42a1ec, #0070c9);
+    border: none;
+}
+.ad-section{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+.profile-section img{
+    width: 100%
+}
+.profile-header{
+    padding: 0px;
+    background: #dedede;
+    margin-bottom: 10px;
+}
+.profile-header div{
+    padding: 10px 10px;
+}
+.logout-btn{
+    cursor:pointer;
+    display: block;
+    text-align: center;
+}
+.provider-logo{
+    color: #fff;
+    text-align: center;
+}
+.fb{
+    background: #3b5998;
+}
+.google{
+    background: #dd4b39;
+}
+.linkedin{
+    background: #007bb6;
+}
+.provider-logo > .fa{
+    font-size: 15px;
+    transform: scale(1.5);
+}
+.navbar-brand img{
+    float: left;
+    width: 35px;
+    margin-top: -7px;
+    margin-right: 5px;
+}

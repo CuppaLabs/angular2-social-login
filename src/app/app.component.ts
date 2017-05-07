@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthService }      from './auth.service';
+import { AuthService }      from './cuppaOAuth/auth.service';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   template: `
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -14,7 +14,7 @@ import { AuthService }      from './auth.service';
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">
-          <img alt="Brand" src="assets/img/cuppa-logo.png">
+          <img alt="Brand" src="assets/images/coffee6.png">
           Cuppa OAuth2</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -25,7 +25,6 @@ import { AuthService }      from './auth.service';
       <div class="container">
         <h2 class="title">Angular2 OAuth2</h2> 
         <h3 class="sub-title"> Social Login Demo</h3>
-          <h1 *ngIf="authService.loading">Logging in.. Please Wait...</h1>
           <router-outlet></router-outlet>
       </div>
     </div>
@@ -33,7 +32,7 @@ import { AuthService }      from './auth.service';
   `
 })
 export class AppComponent {
-    constructor(public authService: AuthService) {
+    constructor() {
   }
 }
 

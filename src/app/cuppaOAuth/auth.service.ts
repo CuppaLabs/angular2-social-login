@@ -17,12 +17,12 @@ import {  Router,Route, NavigationStart,
 @Injectable()
 export class AuthService implements CanActivate, CanActivateChild, CanLoad {
 
-  private configObj = {"authEndpoint":"","clientId":"","redirectURI":""};
-  private code:string;
-  private cachedURL:string;
-  private loginProvider: string;
-  private loading: boolean;
-  private loginURI: string;
+  public configObj = {"authEndpoint":"","clientId":"","redirectURI":""};
+  public code:string;
+  public cachedURL:string;
+  public loginProvider: string;
+  public loading: boolean;
+  public loginURI: string;
   constructor(private _http: InterceptorService,private router:Router, private location: Location) {
     let config = localStorage.getItem("authConfig");
     let provider = localStorage.getItem("provider");
@@ -108,7 +108,7 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
        }
     }
   }
-  private isLoggedIn(): boolean{
+  public isLoggedIn(): boolean{
     let status = false;
     if( localStorage.getItem('isLoggedIn') == "true"){
       status = true;

@@ -933,7 +933,9 @@ app.post('/auth/unlink', ensureAuthenticated, function(req, res) {
     });
   });
 });
-
+app.get('/mockData',function(req,res){
+  res.sendFile(path.join(__dirname, 'dist/mockData/hookload.txt'));
+});
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });

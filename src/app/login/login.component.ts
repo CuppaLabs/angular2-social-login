@@ -7,8 +7,8 @@ import { Component }        from '@angular/core';
     </div>`
 })
 export class LoginComponent {
-   private authServerBaseUrl = 'https://cuppa-angular2-oauth.herokuapp.com';
-   private config = {
+   public authServerBaseUrl = 'https://cuppa-angular2-oauth.herokuapp.com';
+   public config = {
    "loginRoute":"login",
    "linkedin":{
      "authEndpoint": this.authServerBaseUrl+"/auth/linkedin",

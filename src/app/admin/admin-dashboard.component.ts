@@ -39,8 +39,8 @@ import 'rxjs/add/operator/map';
   `
 })
 export class AdminDashboardComponent implements OnInit {
-  private user:User = new User();
-  constructor(private adminService: AdminService, private authService: AuthService) {
+  public user:User = new User();
+  constructor(public adminService: AdminService, public authService: AuthService) {
     
   }
 

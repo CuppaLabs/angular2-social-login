@@ -13,7 +13,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng build && npm run start-server",
+    "start": "npm run start-server",
     "start-server":"node auth-server",
     "test": "ng test",
     "lint": "ng lint",

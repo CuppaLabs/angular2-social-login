@@ -9,7 +9,7 @@ import { ActivatedRoute }       from '@angular/router';
   selector:'cuppa-oauth',
   template: `
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-4 " style="margin: 0px auto;">
       <button (click)="googleLogin()" class="btn btn-block btn-social btn-google">
           <span class="fa fa-google"></span> Sign in with Google
       </button>
